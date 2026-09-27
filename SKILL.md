@@ -1,6 +1,6 @@
 ---
 name: blueprint-animation
-description: Animated before → after UX redesign: the UI turns into a blueprint, changed parts rebuild step by step, then the new UI is revealed. Use for UX case studies, redesign walkthroughs and social posts.
+description: Animated before → after UX redesign. The UI turns into a blueprint, changed parts rebuild step by step, then the new UI is revealed. Use for UX case studies, redesign walkthroughs and social posts.
 ---
 
 # Blueprint Before/After
