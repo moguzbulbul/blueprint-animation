@@ -36,7 +36,7 @@ The video above is a CRM company page redesigned in 5 steps: *One primary action
 
 ## Install in Claude Design
 
-1. Download [`blueprint-animation.zip`](https://github.com/moguzbulbul/blueprint-animation/releases/latest/download/blueprint-animation.zip) from the latest release.
+1. Download [`blueprint-animation.zip`](https://github.com/moguzbulbul/blueprint-animation/releases/download/v1.0.1/blueprint-animation.zip) (v1.0.1).
 2. On claude.ai, open **Customize → Skills → + → Create skill → Upload a skill** and choose the ZIP.
 3. In Claude Design, share your Before/After screens and your list of changes, and ask for a blueprint before/after animation.
 
