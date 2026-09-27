@@ -3,11 +3,13 @@ name: blueprint-animation
 description: Blueprint animation that explains UX decisions step by step. With Before and After, changed parts rebuild. With one screen, each module is annotated with what and why. For case studies and posts.
 ---
 
-# Blueprint Before/After
+# Blueprint animation
+
+Skill version 1.3.0. Start your first question form or reply with `blueprint-animation 1.3.0 · <Explain or Redesign>`, so the user can see which version and mode is running.
 
 One continuous animation of ONE screen. The page never cuts; it runs in N numbered steps. Each step explains a single UX decision.
 
-Two modes. Pick the mode from what the user gives you:
+Two modes. Pick the mode from what the user gives you (§1); with one screen, Explain is always offered first:
 - **Redesign** (Before + After screens): the screen is redesigned step by step. §1–7 describe this mode.
 - **Explain** (one screen, no Before): the design never changes. Each step turns one module into a blueprint and draws why it is built that way. See §8. Everything in §1–7 still applies unless §8 says otherwise.
 
@@ -28,7 +30,7 @@ The screens the user gives are reproduced 1:1. This rule beats every other rule 
 - Convert Figma units exactly: letter spacing % → em (−2% = −0.02em); line height in px stays px; an inside stroke stays inside the box (`box-sizing: border-box` border or `inset` shadow); drop shadows keep the same x, y, blur, spread and colour.
 - The app is the Figma frame's own size at 1:1 (1440×900 only if the frame is). The canvas grows to fit it.
 - No restyling, no new spacing, no removed shadows, no "improvements". The only colours outside the design are the blueprint's.
-- Redesign mode: if one of Before/After is derived rather than given, it reuses the given screen's components and changes only what the step list says.
+- Redesign mode: a screen you design or derive (because the user picked that option, §1) reuses the given screen's components and changes only what the step list says.
 
 Order of work:
 1. Build each given screen as static real-UI components.
@@ -45,7 +47,17 @@ Order of work:
 - The design system for the real UI. Blueprint colours are the only colours outside it.
 - Canvas size: the app is the Figma frame at 1:1 on top, with a margin and a text band below (a 1440×900 frame gives the default 1600×1200).
 
-If only one screen is given, use Explain mode; don't ask for a Before. If the user gives the screen but no module list, propose 3–6 modules with what and why, and get them confirmed before building. If anything else is missing, ask before building.
+Pick the mode:
+- **Two screens given → Redesign mode.** No mode question.
+- **One screen given →** the first question is the mode. It MUST include this option, listed first, in the user's language:
+  **"Continue with this one screen: the design stays as it is; explain what and why, module by module (Explain)"**
+  Other options may follow: it is the Before (you design the After), it is the After (you derive the Before), or the user uploads the other screen.
+- A one-screen request can always go ahead in Explain mode. Never say you can't start without a second screen.
+
+Then:
+- **Explain:** propose 3–6 modules (name · what · why) and get them confirmed. Proposals describe the screen as it is, never changes to it.
+- **Redesign:** propose 3–6 changes (name · problem · fix) and get them confirmed.
+- Anything else missing (a font, a Figma value, see §0): ask before building.
 
 ## 2. The per-step sequence (never skip a phase)
 
