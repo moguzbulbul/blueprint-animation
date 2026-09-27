@@ -61,9 +61,11 @@ Rules that make it feel smooth:
 - Only one step's notes are visible at a time, in the bottom band: `[number badge · NAME] [problem] [fix]`.
 - No top title bar and no end title unless the user asks for them.
 
-## 5. Architecture (animations-v3 engine)
+## 5. Architecture (animations_v3 starter)
 
-- `OM_SCENES` literal in the DC helmet: `Before, <step names…>, After`. Build on `animations-v3.jsx`; the scene is one `.jsx` loaded through `<x-import component-from-global-scope=… from="./animations-v3.jsx ./scene.jsx">`.
+- The engine is Claude Design's `animations_v3` starter, copied into the project as `animations-v3.jsx`. It is not part of this skill; build on it, don't write your own.
+- `OM_SCENES` literal in the DC helmet: `Before, <step names…>, After`. The scene is one `.jsx` loaded through `<x-import component-from-global-scope=… from="./animations-v3.jsx ./scene.jsx">`.
+- Start the scene from [`example-scene.jsx`](example-scene.jsx). Keep its blueprint kit as it is: `phases`, `tw`/`lerp`/`LR`, `Wire`, `Guide`, `Line`, `Label`, `DimH`, `Num`, `curve`/`ctr`, `Focus`, the clip + scan-line layer and the text band. Rewrite only what belongs to the new screen: the real-UI components, `StaticBP`, the geometry and `STEPS`.
 - `phases(T, start, dur, c1)` returns `{focus, hl, call, bp, wipe, rev, cdim, lines, p, before, after, fix}` for each step. All choreography reads from these.
 - Global layout values are derived from step progress: column x/width, header right edge, logo x, timeline y, panel x.
 - Layers inside the app, bottom → top:
