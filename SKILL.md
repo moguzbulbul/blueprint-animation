@@ -1,13 +1,13 @@
 ---
-name: Blueprint Before/After
-description: Animated before → after UX redesign explained step by step. The live UI turns into a blueprint drawing, the changed parts rebuild themselves, then the new UI is revealed. Use for UX case studies, redesign walkthroughs, and social posts that show why a change was made.
+name: blueprint-animation
+description: Animated before → after UX redesign: the UI turns into a blueprint, changed parts rebuild step by step, then the new UI is revealed. Use for UX case studies, redesign walkthroughs and social posts.
 ---
 
 # Blueprint Before/After
 
 One continuous animation of ONE screen. The page never cuts; it is redesigned in N numbered steps. Each step explains a single UX decision.
 
-Reference build: `Northwind Blueprint Before After.dc.html` + `northwind-blueprint.jsx` (copy of the scene in `skills/blueprint-before-after/example-scene.jsx`).
+Reference scene: [`example-scene.jsx`](example-scene.jsx) (a CRM record page redesigned in 5 steps).
 
 ## 1. Before you build — gather
 
@@ -54,7 +54,7 @@ Rules that make it feel smooth:
 - Only one step's notes are visible at a time, in the bottom band: `[number badge · NAME] [problem] [fix]`.
 - No top title bar and no end title unless the user asks for them.
 
-## 5. Architecture (animations_v3 engine)
+## 5. Architecture (animations-v3 engine)
 
 - `OM_SCENES` literal in the DC helmet: `Before, <step names…>, After`. Build on `animations-v3.jsx`; the scene is one `.jsx` loaded through `<x-import component-from-global-scope=… from="./animations-v3.jsx ./scene.jsx">`.
 - `phases(T, start, dur, c1)` returns `{focus, hl, call, bp, wipe, rev, cdim, lines, p, before, after, fix}` for each step. All choreography reads from these.
