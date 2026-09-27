@@ -26,6 +26,8 @@ Show *why* a design works, not only what it looks like. The skill animates one s
 4. **Reveal:** the scan line sweeps again and the real UI appears: the new one in Redesign, the same one in Explain.
 5. **Hold:** the fix (Redesign) or the why (Explain) sentence fades in, then the next step starts.
 
+Your Figma design is reproduced 1:1. The skill reads every value from the Figma file, uses its real fonts and exported icons, and checks the built screens against the Figma export before it animates anything.
+
 The skill also carries the rules that keep it clean: no text over moving parts, invisible old → new swaps, staggered motion, smooth performance, and a QA checklist before hand-off.
 
 Use it for UX case studies, redesign walkthroughs, design rationale and social posts.
@@ -42,7 +44,7 @@ The video above shows Redesign mode: a CRM company page redesigned in 5 steps (*
 
 ## Install in Claude Design
 
-1. Download [`blueprint-animation.zip`](https://github.com/moguzbulbul/blueprint-animation/releases/download/v1.1.1/blueprint-animation.zip) (v1.1.1).
+1. Download [`blueprint-animation.zip`](https://github.com/moguzbulbul/blueprint-animation/releases/download/v1.2.0/blueprint-animation.zip) (v1.2.0).
 2. On claude.ai, open **Customize → Skills → + → Create skill → Upload a skill** and choose the ZIP.
 3. In Claude Design, share your Before/After screens (or one screen) and ask for a blueprint animation.
 

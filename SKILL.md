@@ -11,17 +11,39 @@ Two modes. Pick the mode from what the user gives you:
 - **Redesign** (Before + After screens): the screen is redesigned step by step. §1–7 describe this mode.
 - **Explain** (one screen, no Before): the design never changes. Each step turns one module into a blueprint and draws why it is built that way. See §8. Everything in §1–7 still applies unless §8 says otherwise.
 
+In both modes the design comes from Figma and is reproduced exactly (§0).
+
 Reference scene: [`example-scene.jsx`](example-scene.jsx) (Redesign mode: a CRM record page redesigned in 5 steps).
+
+## 0. Fidelity — the Figma design is exact
+
+The screens the user gives are reproduced 1:1. This rule beats every other rule in this skill, performance included.
+
+- Read every value from the Figma source, not from a screenshot: frame size; each layer's x, y, w, h; fills, strokes, radii, effects; text style (family, size, weight, line height, letter spacing, case). Use the file's colour and text styles as they are.
+- If a value can't be read (only a screenshot, a missing font, a hidden layer), list what is missing and ask. Never guess, round or "tidy up" a value.
+- Copy all text exactly: wording, capitals, numbers, dates, punctuation.
+- Load the file's real fonts. If a font can't be loaded, stop and ask for it: a stand-in font changes every text width and wrap.
+- Icons, logos and images: export them from Figma (SVG for vectors) and use them as they are. Never redraw them or swap in a lookalike from an icon set.
+- Place every element at its Figma coordinates relative to the frame (`abs(x, y, w, h)`). Don't re-flow the frame into flex or grid if that moves anything by even 1 px.
+- Convert Figma units exactly: letter spacing % → em (−2% = −0.02em); line height in px stays px; an inside stroke stays inside the box (`box-sizing: border-box` border or `inset` shadow); drop shadows keep the same x, y, blur, spread and colour.
+- The app is the Figma frame's own size at 1:1 (1440×900 only if the frame is). The canvas grows to fit it.
+- No restyling, no new spacing, no removed shadows, no "improvements". The only colours outside the design are the blueprint's.
+- Redesign mode: if one of Before/After is derived rather than given, it reuses the given screen's components and changes only what the step list says.
+
+Order of work:
+1. Build each given screen as static real-UI components.
+2. Render it at 1:1 and compare it with the Figma export of the same frame (50% overlay or pixel diff). Fix every difference before going on.
+3. Only then build the blueprint and the motion. At rest (before step 1 and after the last step) the real UI matches the Figma frames exactly.
 
 ## 1. Before you build — gather
 
-- **Redesign:** the Before and After screens (source files or screenshots). The After is the source of truth; don't redesign beyond it.
-  **Explain:** the one screen. It is the source of truth and nothing on it changes.
+- **Redesign:** the Before and After screens, as Figma frames (screenshots only when there is no file; see §0). The After is the source of truth; don't redesign beyond it.
+  **Explain:** the one screen, as a Figma frame. It is the source of truth and nothing on it changes.
 - The list of steps, 3–6.
   **Redesign:** each step needs **name** (2–4 words), **problem** (one sentence, ≤ 12 words), **fix** (one sentence).
   **Explain:** each step is one module and needs **name** (the module, 2–4 words), **what** (one sentence, ≤ 12 words: the decision), **why** (one sentence: the user benefit or principle behind it).
 - The design system for the real UI. Blueprint colours are the only colours outside it.
-- Canvas size (default 1600×1200: app 1440×900 at 1:1 on top, a text band below).
+- Canvas size: the app is the Figma frame at 1:1 on top, with a margin and a text band below (a 1440×900 frame gives the default 1600×1200).
 
 If only one screen is given, use Explain mode; don't ask for a Before. If the user gives the screen but no module list, propose 3–6 modules with what and why, and get them confirmed before building. If anything else is missing, ask before building.
 
@@ -48,6 +70,7 @@ Rules that make it feel smooth:
 
 - Draw on white, not on a navy background. Line colour is cyan-ink `#0B8FC2`; fill `#2ACCFF14`; guides are dotted `2 4`.
 - **Everything on screen** turns into a blueprint in the blueprint phase: rail, breadcrumb, logo (box, mark and outlined wordmark), buttons, rows, tabs, cards, panel. Never convert only part of the screen.
+- Each wire uses the exact rect of the element it stands for (§0), so the blueprint lines up with the real UI.
 - Wires carry their real text (button labels, row text, tab names). Rounded pills stay rounded, list rows get an icon circle.
 - Selection handles (5 px squares) on the 1–3 wires that matter in that step.
 - Corner ticks on the focus rect, dotted alignment guides through key edges, one dimension line per step with a short UPPERCASE mono label (for example "CENTERED COLUMN · 760").
@@ -81,7 +104,7 @@ Rules that make it feel smooth:
 - `StaticBP` is memoized with rounded props, so it re-renders once per step, not every frame.
 - Build a step's `<Focus>` JSX only while `focus > 0`.
 - Move with `transform: translate`, not `left/top`.
-- No blurred box-shadows, no `text-wrap: pretty`, no nested `<svg>` per wire, no stroked text halos.
+- No blurred box-shadows on layers that move, no `text-wrap: pretty`, no nested `<svg>` per wire, no stroked text halos. A shadow that is in the design stays (§0).
 - In the engine, persist the playhead to `localStorage` at most every 500 ms (not every frame).
 - Measure: a seek loop over the whole timeline (< 7 ms per frame), plus a rAF loop during real playback (no frames > 34 ms).
 
@@ -90,7 +113,7 @@ Rules that make it feel smooth:
 1. Filmstrip with `data-om-seek-to-time-frame` at each step's problem, blueprint-in, mid-construct, reveal and hold.
 2. At mid-construct: no text sits on text, and no moving wire crosses a label.
 3. Every counter and date on screen matches the data.
-4. Before and After states match the source screens.
+4. Fidelity (§0): the real UI at rest matches the Figma exports at 1:1 in an overlay or pixel diff, including text wraps, icon shapes, strokes and shadows.
 5. Performance numbers from §6.
 
 ## 8. Explain mode (one screen, no Before)
