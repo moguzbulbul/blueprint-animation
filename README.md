@@ -3,6 +3,7 @@
 A **Claude Design** skill that turns a UX redesign into one continuous, step-by-step animation. The live UI turns into a blueprint drawing, the parts that change rebuild themselves, then the new UI is revealed.
 
 Created by **Oğuz** · [@moguzbulbul](https://x.com/moguzbulbul) · [oguz.design](https://oguz.design)
+
 Inspired by [Arjun Mahesh](https://x.com/arjmahesh).
 
 [![Blueprint Before/After example](media/preview.gif)](media/example.mp4)
