@@ -1,11 +1,12 @@
 ---
 name: blueprint-animation
 description: Blueprint animation that explains UX decisions step by step. With Before and After, changed parts rebuild. With one screen, each module is annotated with what and why. For case studies and posts.
+license: CC BY-NC 4.0, non-commercial use only. See LICENSE.
 ---
 
 # Blueprint animation
 
-Skill version 1.3.0. Start your first question form or reply with `blueprint-animation 1.3.0 · <Explain or Redesign>`, so the user can see which version and mode is running.
+Skill version 1.3.1. Start your first question form or reply with `blueprint-animation 1.3.1 · <Explain or Redesign>`, so the user can see which version and mode is running.
 
 One continuous animation of ONE screen. The page never cuts; it runs in N numbered steps. Each step explains a single UX decision.
 

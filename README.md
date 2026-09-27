@@ -6,6 +6,8 @@ Created by **Oğuz** · [@moguzbulbul](https://x.com/moguzbulbul) · [oguz.desig
 
 Inspired by [Arjun Mahesh](https://x.com/arjmahesh).
 
+Free for non-commercial use ([CC BY-NC 4.0](LICENSE)). Commercial use needs written permission.
+
 [![Blueprint Before/After example](media/preview.gif)](media/example.mp4)
 
 [Watch the full-quality video (MP4)](media/example.mp4)
@@ -44,7 +46,7 @@ The video above shows Redesign mode: a CRM company page redesigned in 5 steps (*
 
 ## Install in Claude Design
 
-1. Download [`blueprint-animation.zip`](https://github.com/moguzbulbul/blueprint-animation/releases/download/v1.3.0/blueprint-animation.zip) (v1.3.0).
+1. Download [`blueprint-animation.zip`](https://github.com/moguzbulbul/blueprint-animation/releases/download/v1.3.1/blueprint-animation.zip) (v1.3.1).
 2. On claude.ai, open **Customize → Skills → + → Create skill → Upload a skill** and choose the ZIP.
 3. In Claude Design, share your Before/After screens (or one screen) and ask for a blueprint animation.
 
@@ -53,3 +55,10 @@ Building the ZIP yourself? It must hold `blueprint-animation/SKILL.md` (not the 
 ```bash
 zip -r blueprint-animation.zip blueprint-animation -x "blueprint-animation/.git/*" "blueprint-animation/media/*"
 ```
+
+## License
+
+© 2026 Oğuz ([@moguzbulbul](https://x.com/moguzbulbul)). Licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). See [`LICENSE`](LICENSE).
+
+- **You may** use, share and adapt this skill for non-commercial purposes, with credit to Oğuz (@moguzbulbul) and a link to this repo.
+- **Commercial use**, for example selling the skill or including it in a paid product or service, needs written permission. Ask on X: [@moguzbulbul](https://x.com/moguzbulbul).
